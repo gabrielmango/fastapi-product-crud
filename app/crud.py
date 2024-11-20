@@ -1,5 +1,5 @@
-from database import read_data, write_data
-from models import Product
+from app.database import read_data, write_data
+from app.models import Product
 
 def get_all_products():
     return read_data()
