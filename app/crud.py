@@ -11,10 +11,11 @@ def get_product_by_id(product_id: int):
 def create_product(product_data):
     products = read_data()
     new_id = max(p["id"] for p in products) + 1 if products else 1
-    new_product = Product(id=new_id, **product_data)
+    new_product = Product(id=new_id, **product_data.dict())
     products.append(new_product.dict())
     write_data(products)
     return new_product
+
 
 def update_product(product_id: int, product_data):
     products = read_data()

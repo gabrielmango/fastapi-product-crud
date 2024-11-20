@@ -16,5 +16,17 @@
         "name": "Updated Product",
         "description": "Updated Product Description",
         "price": 19.99
+    },
+    {
+        "id": 4,
+        "name": "iPhone 16",
+        "description": "A new smartphone",
+        "price": 499.9
+    },
+    {
+        "id": 5,
+        "name": "iPhone 15",
+        "description": "A old smartphone",
+        "price": 499.9
     }
 ]
