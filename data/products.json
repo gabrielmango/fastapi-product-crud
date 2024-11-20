@@ -4,5 +4,11 @@
         "name": "Laptop",
         "description": "High-performance laptop",
         "price": 1500.99
+    },
+    {
+        "id": 2,
+        "name": "New Product",
+        "description": "This is a new product.",
+        "price": 9.99
     }
 ]
