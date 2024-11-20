@@ -25,16 +25,24 @@ def update_product(product_id: int, product_data):
             return product
     return None
 
+def delete_product(product_id: int):
+    products = read_data()
+    updated_products = [p for p in products if p["id"] != product_id]
+    write_data(updated_products)
+    return len(products) != len(updated_products)
+
 
 
 if __name__ == '__main__':
+    product_id = 4
+    is_product_deleted = delete_product(product_id)
 
-    update_product_data = {
-        "name": "Updated Product",
-        "price": 19.99,
-        "description": "Updated Product Description",
-        "id": 3
-    }
+    if is_product_deleted:
+        print(f"Product with id {product_id} has been deleted.")
     
-    updated_product = update_product(update_product_data["id"], update_product_data)
-    print("Updated product:", updated_product)
+    product = get_product_by_id(product_id)
+
+    if product:
+        print(f"Product data: {product}")
+    else:
+        print(f"Product with id {product_id} not found.")
