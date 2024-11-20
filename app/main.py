@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from app.crud import get_all_products, get_product_by_id, create_product
+from app.crud import get_all_products, get_product_by_id, create_product, update_product
 from app.schemas import ProductCreate
 
 
@@ -19,3 +19,10 @@ def read_product_by_id(product_id: int):
 @app.post("/products/", response_model=ProductCreate)
 def create_new_product(product: ProductCreate):
     return create_product(product)
+
+@app.put("/products/{product_id}", response_model=ProductCreate)
+def update_existing_product(product_id: int, product: ProductCreate):
+    updated = update_product(product_id, product)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Product not found")
+    return updated
