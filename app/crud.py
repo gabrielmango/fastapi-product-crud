@@ -16,11 +16,25 @@ def create_product(product_data):
     write_data(products)
     return new_product
 
+def update_product(product_id: int, product_data):
+    products = read_data()
+    for product in products:
+        if product["id"] == product_id:
+            product.update(product_data)
+            write_data(products)
+            return product
+    return None
+
+
 
 if __name__ == '__main__':
 
-    new_product_data = {"name": "New Product", "price": 9.99, "description": "New Product Description"}
-    new_product = create_product(new_product_data)
-    print("New product:", new_product)
-
+    update_product_data = {
+        "name": "Updated Product",
+        "price": 19.99,
+        "description": "Updated Product Description",
+        "id": 3
+    }
     
+    updated_product = update_product(update_product_data["id"], update_product_data)
+    print("Updated product:", updated_product)
